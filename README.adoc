@@ -42,3 +42,11 @@ Contributing
 
 Bug reports and pull requests are welcome on GitHub
 at https://github.com/[USERNAME]/template_tags.
+
+License
+-------
+
+Template Tags is licensed under either the terms of
+https://tldrlegal.com/license/ruby-license-(ruby)[Ruby],
+https://tldrlegal.com/license/-isc-license[ISC],
+or https://tldrlegal.com/license/mit-license[MIT (Expat)] licenses.
