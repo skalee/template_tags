@@ -1,6 +1,6 @@
 TemplateTags
 ============
-:homepage: TODO
+:homepage: https://github.com/skalee/template_tags
 :toc:
 
 Welcome to your new gem! In this directory, you'll find the files you need to
@@ -41,7 +41,7 @@ Contributing
 ------------
 
 Bug reports and pull requests are welcome on GitHub
-at https://github.com/[USERNAME]/template_tags.
+at https://github.com/skalee/template_tags.
 
 License
 -------
