@@ -1,6 +1,9 @@
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 require "template_tags"
 
+require "combustion"
+Combustion.initialize! :action_view
+
 require "rspec/rails"
 require "nokogiri"
 
