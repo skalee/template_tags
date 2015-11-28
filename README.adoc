@@ -3,6 +3,11 @@ TemplateTags
 :homepage: https://github.com/skalee/template_tags
 :toc:
 
+image:https://img.shields.io/gem/v/template_tags.svg[
+Version, link="https://rubygems.org/gems/template_tags"]
+image:https://img.shields.io/travis/skalee/template_tags/master.svg[
+Build Status, link="https://travis-ci.org/skalee/template_tags"]
+
 Welcome to your new gem! In this directory, you'll find the files you need to
 be able to package up your Ruby library into a gem. Put your Ruby code in the
 file `lib/template_tags`. To experiment with that code, run `bin/console` for
