@@ -2,6 +2,7 @@ $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 require "template_tags"
 
 require "rspec/rails"
+require "nokogiri"
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
