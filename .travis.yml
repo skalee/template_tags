@@ -1,4 +1,32 @@
 language: ruby
-rvm:
-  - 2.2.3
+cache: bundler
+script: bundle exec rspec
 before_install: gem install bundler -v 1.10.6
+rvm:
+  - 1.9.3
+  - "2.0"
+  - "2.1"
+  - "2.2"
+  - rbx-2
+  - jruby-19mode
+  - ruby-head
+  - jruby-head
+
+gemfile:
+  - gemfiles/Rails-4.2.gemfile
+
+matrix:
+  include:
+    - rvm: "2.2"
+      gemfile: gemfiles/Rails-4.1.gemfile
+
+    - rvm: "2.2"
+      gemfile: gemfiles/Rails-4.0.gemfile
+
+    - rvm: "2.2"
+      gemfile: gemfiles/Rails-head.gemfile
+
+  allow_failures:
+    - rvm: ruby-head
+    - rvm: jruby-head
+    - gemfile: gemfiles/Rails-head.gemfile
