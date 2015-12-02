@@ -34,6 +34,23 @@ describe TemplateTags::ViewHelper, :type => :helper do
         expect(enclosed_html).to eq some_content
       end
     end
+
+    context "called with single parameter and :partial option" do
+      let(:retval){ described_method.call id, partial: "p", what: "ever" }
+
+      before{ allow(helper).to receive(:render).and_return(some_content) }
+
+      include_examples "default behaiour"
+
+      it "passes all the options to #render helper method" do
+        expect(helper).to receive(:render).with(partial: "p", what: "ever")
+        retval
+      end
+
+      it "encloses the content returned by #render helper method" do
+        expect(enclosed_html).to eq some_content
+      end
+    end
   end
 
 end

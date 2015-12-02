@@ -27,6 +27,36 @@ describe "Feature and integration specs:", type: :view do
     expect(parsed_html_in_script_element "#simple-tpl").to have_css link_selector
   end
 
+  example "When I call #template_tag" \
+    " with a String parameter" \
+    " and an options hash which includes :partial option" \
+    " I expect it to render a single <script> element" \
+    " with id equal to the first parameter" \
+    " enclosing the rendered partial content" do
+
+    template =
+      <<-HTML
+        <%= template_tag "simple-tpl", partial: "/enclose_me",
+            locals: {url: "http://example.test"} %>
+      HTML
+
+    partial =
+      <<-HTML
+        <div id="div-with-link">
+          <%= link_to "Example", url %>
+        </div>
+      HTML
+
+    link_selector ='div#div-with-link > a[href="http://example.test"]'
+
+    stub_template template_name => template
+    stub_template "_enclose_me.html.erb" => partial
+    render template: template_name
+
+    expect(parsed_html).to have_css "#simple-tpl"
+    expect(parsed_html_in_script_element "#simple-tpl").to have_css link_selector
+  end
+
   def parsed_html_in_script_element selector
     element = parsed_html.at_css selector
     element.name == "script" or raise
