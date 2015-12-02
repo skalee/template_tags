@@ -8,12 +8,79 @@ Version, link="https://rubygems.org/gems/template_tags"]
 image:https://img.shields.io/travis/skalee/template_tags/master.svg[
 Build Status, link="https://travis-ci.org/skalee/template_tags"]
 
-Welcome to your new gem! In this directory, you'll find the files you need to
-be able to package up your Ruby library into a gem. Put your Ruby code in the
-file `lib/template_tags`. To experiment with that code, run `bin/console` for
-an interactive prompt.
+There are several ways to provide client-side templates.  One possibility is to
+put them inside +<script>+ elements.
 
-TODO: Delete this and the text above, and describe your gem
+Unfortunately, many text editors interpret all such content as JavaScript
+and enable unwanted syntax highlight mode.  However, this can be remedied by
+using a dedicated helper method.  I found myself copying that helper method
+into several projects, therefore I decided to extract it into a gem.
+
+Usage
+-----
+
+This gem provides a +#template_tag+ which renders a proper script tag.  Template
+can be either:
+
+. Passed as a block:
++
+[source,html]
+--------------------------------------------------------------------------------
+<%= template_tag "simple-tpl" do %>
+  <div id="div-with-link">
+    <%= link_to "Example", "http://example.test" %>
+  </div>
+<% end %>
+--------------------------------------------------------------------------------
+
+. Indicated by passing a partial name:
++
+[source,html]
+--------------------------------------------------------------------------------
+<%= template_tag "simple-tpl", partial: "/enclose_me",
+    locals: {url: "http://example.test"} %>
+--------------------------------------------------------------------------------
+
+Provided that following view partial is defined in
++/app/views/_enclose_me.html.erb+:
+
+[source,html]
+--------------------------------------------------------------------------------
+<div id="div-with-link">
+  <%= link_to "Example", url %>
+</div>
+--------------------------------------------------------------------------------
+
+Both will return the same HTML fragment:
+[source,html]
+--------------------------------------------------------------------------------
+<script type="text/x-tmpl" id="simple-tpl">
+  <div id="div-with-link">
+    <a href="http://example.test">Example</a>
+  </div>
+</script>
+--------------------------------------------------------------------------------
+
+Missing features
+----------------
+
+This gem is ready for use.  That said, there are several less-important features
+which could be added:
+
+. Ability to specify script element's +type+ attribute, either per use or
+  with single application-wide setting.
+. Some ready-to-go +getTemplate()+ JavaScript function, although
+  +document.getElementById()+ is no rocket science.
+. Ability to render HTML5's +<template>+ element, not widely supported yet.
+
+Contributing
+------------
+
+Bug reports and pull requests are welcome on GitHub
+at https://github.com/skalee/template_tags.
+
+When run with Guard, tests may fail randomly for some reason.  Retrying always
+helps.  Never happens outside Guard.
 
 Installation
 ------------
@@ -27,26 +94,17 @@ gem 'template_tags'
 
 And then execute:
 
+[source,sh]
 --------------------------------------------------------------------------------
 $ bundle
 --------------------------------------------------------------------------------
 
 Or install it yourself as:
 
+[source,sh]
 --------------------------------------------------------------------------------
 $ gem install template_tags
 --------------------------------------------------------------------------------
-
-Usage
------
-
-TODO: Write usage instructions here
-
-Contributing
-------------
-
-Bug reports and pull requests are welcome on GitHub
-at https://github.com/skalee/template_tags.
 
 License
 -------
@@ -55,3 +113,9 @@ Template Tags is licensed under either the terms of
 https://tldrlegal.com/license/ruby-license-(ruby)[Ruby],
 https://tldrlegal.com/license/-isc-license[ISC],
 or https://tldrlegal.com/license/mit-license[MIT (Expat)] licenses.
+
+See also
+--------
+
+* http://www.html5rocks.com/en/tutorials/webcomponents/template/[HTML's New
+Template Tag] — nice _HTML5 Rocks_ article about +<template>+ tag.
