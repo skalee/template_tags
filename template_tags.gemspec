@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Sebastian Skałacki"]
   spec.email         = ["skalee@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = %q{Simple view helper for Rails which makes embedding} +
+                       %q{ client-side templates in views bit easier.}
   spec.licenses      = %w[Ruby MIT ISC]
   spec.homepage      = "https://github.com/skalee/template_tags"
 
