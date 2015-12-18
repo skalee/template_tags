@@ -8,3 +8,4 @@
 /spec/reports/
 /spec/internal/log
 /tmp/
+/*.gem
