@@ -7,8 +7,9 @@ rvm:
   - "2.0"
   - "2.1"
   - "2.2"
-  - ruby-2.3.0-preview1
+  - "2.3.0"
   - rbx-2
+  - rbx-3
   - jruby-19mode
   - ruby-head
   - jruby-head
@@ -18,16 +19,16 @@ gemfile:
 
 matrix:
   include:
-    - rvm: "2.2"
+    - rvm: "2.3.0"
       gemfile: gemfiles/Rails-4.1.gemfile
 
-    - rvm: "2.2"
+    - rvm: "2.3.0"
       gemfile: gemfiles/Rails-4.0.gemfile
 
-    - rvm: "2.2"
-      gemfile: gemfiles/Rails-head.gemfile
+    - rvm: "2.3.0"
+      gemfile: gemfiles/Rails-4.2-upstream.gemfile
 
   allow_failures:
     - rvm: ruby-head
     - rvm: jruby-head
-    - gemfile: gemfiles/Rails-head.gemfile
+    - gemfile: gemfiles/Rails-4.2-upstream.gemfile
