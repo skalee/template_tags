@@ -6,7 +6,7 @@ TemplateTags
 image:https://img.shields.io/gem/v/template_tags.svg[
 Version, link="https://rubygems.org/gems/template_tags"]
 image:https://img.shields.io/travis/skalee/template_tags/master.svg[
-Build Status, link="https://travis-ci.org/skalee/template_tags"]
+Build Status, link="https://travis-ci.org/skalee/template_tags/branches"]
 
 There are several ways to provide client-side templates.  One possibility is to
 put them inside +<script>+ elements.
