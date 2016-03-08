@@ -20,16 +20,19 @@ gemfile:
 matrix:
   include:
     - rvm: "2.3.0"
+      gemfile: gemfiles/Rails-5.0.gemfile
+
+    - rvm: "2.3.0"
       gemfile: gemfiles/Rails-4.1.gemfile
 
     - rvm: "2.3.0"
       gemfile: gemfiles/Rails-4.0.gemfile
 
     - rvm: "2.3.0"
-      gemfile: gemfiles/Rails-4.2-upstream.gemfile
+      gemfile: gemfiles/Rails-head.gemfile
 
   allow_failures:
     - rvm: ruby-head
     - rvm: jruby-head
     - rvm: rbx-3
-    - gemfile: gemfiles/Rails-4.2-upstream.gemfile
+    - gemfile: gemfiles/Rails-head.gemfile
