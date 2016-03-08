@@ -3,33 +3,43 @@ cache: bundler
 script: bundle exec rspec
 before_install: gem install bundler -v 1.10.6
 rvm:
-  - 1.9.3
-  - "2.0"
-  - "2.1"
-  - "2.2"
   - "2.3.0"
-  - rbx-2
-  - rbx-3
-  - jruby-19mode
-  - ruby-head
-  - jruby-head
 
 gemfile:
+  - gemfiles/Rails-5.0.gemfile
   - gemfiles/Rails-4.2.gemfile
+  - gemfiles/Rails-4.1.gemfile
+  - gemfiles/Rails-4.0.gemfile
+  - gemfiles/Rails-head.gemfile
 
 matrix:
   include:
-    - rvm: "2.3.0"
+    - rvm: "2.2"
+      gemfile: gemfiles/Rails-4.2.gemfile
+
+    - rvm: "2.1"
+      gemfile: gemfiles/Rails-4.2.gemfile
+
+    - rvm: "2.0"
+      gemfile: gemfiles/Rails-4.2.gemfile
+
+    - rvm: "1.9.3"
+      gemfile: gemfiles/Rails-4.2.gemfile
+
+    - rvm: "rbx-2"
+      gemfile: gemfiles/Rails-4.2.gemfile
+
+    - rvm: "rbx-3"
       gemfile: gemfiles/Rails-5.0.gemfile
 
-    - rvm: "2.3.0"
-      gemfile: gemfiles/Rails-4.1.gemfile
+    - rvm: "jruby-19mode"
+      gemfile: gemfiles/Rails-4.2.gemfile
 
-    - rvm: "2.3.0"
-      gemfile: gemfiles/Rails-4.0.gemfile
+    - rvm: "ruby-head"
+      gemfile: gemfiles/Rails-5.0.gemfile
 
-    - rvm: "2.3.0"
-      gemfile: gemfiles/Rails-head.gemfile
+    - rvm: "jruby-head"
+      gemfile: gemfiles/Rails-5.0.gemfile
 
   allow_failures:
     - rvm: ruby-head
