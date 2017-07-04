@@ -3,18 +3,27 @@ cache: bundler
 script: bundle exec rspec
 before_install: gem install bundler -v 1.10.6
 rvm:
-  - "2.3.0"
+  - "2.4.1"
 
 gemfile:
   - gemfiles/Rails-5.1.gemfile
   - gemfiles/Rails-5.0.gemfile
   - gemfiles/Rails-4.2.gemfile
-  - gemfiles/Rails-4.1.gemfile
-  - gemfiles/Rails-4.0.gemfile
   - gemfiles/Rails-head.gemfile
 
 matrix:
   include:
+    # Test Rails 4.0–4.1 against Ruby 2.3
+    - rvm: "2.3"
+      gemfile: gemfiles/Rails-4.1.gemfile
+
+    - rvm: "2.3"
+      gemfile: gemfiles/Rails-4.0.gemfile
+
+    # Test gem against other Rubies, use the best-matching Rails version
+    - rvm: "2.3"
+      gemfile: gemfiles/Rails-5.1.gemfile
+
     - rvm: "2.2"
       gemfile: gemfiles/Rails-4.2.gemfile
 
