@@ -37,9 +37,6 @@ matrix:
     - rvm: "1.9.3"
       gemfile: gemfiles/Rails-4.2.gemfile
 
-    - rvm: "rbx-2"
-      gemfile: gemfiles/Rails-4.2.gemfile
-
     - rvm: "rbx-3"
       gemfile: gemfiles/Rails-5.1.gemfile
 
