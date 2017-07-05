@@ -1,4 +1,5 @@
 language: ruby
+dist: trusty
 cache: bundler
 script: bundle exec rspec
 before_install: gem install bundler
