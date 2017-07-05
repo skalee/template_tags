@@ -52,5 +52,4 @@ matrix:
   allow_failures:
     - rvm: ruby-head
     - rvm: jruby-head
-    - rvm: rbx-3
     - gemfile: gemfiles/Rails-head.gemfile
